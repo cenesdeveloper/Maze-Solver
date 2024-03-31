@@ -23,7 +23,6 @@ public class Main {
 
             long loadedFile = System.currentTimeMillis();
             long time = loadedFile - loadFile;
-            System.out.printf("Time spent loading the maze from the file: %s",String.format("%.2f", (double) time) + " milliseconds\n");
 
             if (cmd.getOptionValue("p") != null) {
                 logger.info("Validating path");
@@ -37,18 +36,21 @@ public class Main {
                 if (cmd.getOptionValue("baseline") != null){
                     String method = cmd.getOptionValue("method", "bfs");
                     String baseline = cmd.getOptionValue("baseline","righthand");
-
+                    System.out.printf("Time spent loading the maze from the file: %s",String.format("%.2f", (double) time) + " milliseconds\n");
                     long mazeStart = System.currentTimeMillis();
-                    solveMaze(method, maze);
+                    Path path = solveMaze(method, maze);
                     long mazeEnd = System.currentTimeMillis();
                     long mazeTime = mazeEnd - mazeStart;
                     System.out.printf("Time spent exploring the maze using method %s: %s",method, String.format("%.2f", (double) mazeTime) + " milliseconds\n");
 
                     long baselineStart = System.currentTimeMillis();
-                    measureTimeMaze(baseline, maze);
+                    Path pathh = solveBaseline(baseline, maze);
                     long baselineEnd = System.currentTimeMillis();
                     long baselineTime = baselineEnd - baselineStart;
                     System.out.printf("Time spent exploring the maze using baseline method %s: %s",baseline, String.format("%.2f", (double) baselineTime) + " milliseconds\n");
+
+                    Float speedUp = speedUp(pathh, path);
+                    System.out.printf("SpeedUp = %.2f\n", speedUp);
                 }
                 else{
                     String method = cmd.getOptionValue("method", "bfs");
@@ -96,7 +98,7 @@ public class Main {
         logger.info("Computing path");
         return solver.solve(maze);
     }
-    private static Path measureTimeMaze(String baselineMethod, Maze maze) throws Exception{
+    private static Path solveBaseline(String baselineMethod, Maze maze) throws Exception{
         MazeSolver solver = null;
         switch (baselineMethod) {
             case "bfs" -> {
@@ -117,7 +119,15 @@ public class Main {
         }
         return solver.solve(maze);
     }
-
+    private static Float speedUp(Path baseline, Path method){
+        Integer baseline_length = baseline.getCanonicalForm().replaceAll(" ", "").length();
+        Integer method_length = method.getCanonicalForm().replaceAll(" ", "").length();
+//        System.out.printf("Baseline IC = %d\n", baseline_length);
+//        System.out.printf("Method IC = %d\n", method_length);
+        Float speedup = (float) baseline_length/method_length;
+//        System.out.printf("SpeedUPPP = %.2f\n", speedup);
+        return speedup;
+    }
     /**
      * Get options for CLI parser.
      *

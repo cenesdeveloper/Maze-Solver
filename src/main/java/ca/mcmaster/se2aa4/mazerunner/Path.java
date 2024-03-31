@@ -37,7 +37,6 @@ public class Path {
      */
     public String expandFactorizedStringPath(String path) {
         StringBuilder expanded = new StringBuilder();
-
         for (int i = 0; i < path.length(); i++) {
             if (!Character.isDigit(path.charAt(i))) {
                 expanded.append(path.charAt(i));
