@@ -27,7 +27,7 @@ public class Main {
                     System.out.println("incorrect path");
                 }
             } else {
-                String method = cmd.getOptionValue("method", "righthand");
+                String method = cmd.getOptionValue("method", "bfs");
                 Path path = solveMaze(method, maze);
                 System.out.println(path.getFactorizedForm());
             }
@@ -51,13 +51,17 @@ public class Main {
     private static Path solveMaze(String method, Maze maze) throws Exception {
         MazeSolver solver = null;
         switch (method) {
-            case "righthand" -> {
-                logger.debug("RightHand algorithm chosen.");
-                solver = new RightHandSolver();
+            case "bfs" -> {
+                logger.debug("BFS algorithm chosen.");
+                solver = new BfsSolver();
             }
             case "tremaux" -> {
                 logger.debug("Tremaux algorithm chosen.");
                 solver = new TremauxSolver();
+            }
+            case "righthand" -> {
+                logger.debug("Right Hand algorithm chosen.");
+                solver = new RightHandSolver();
             }
             default -> {
                 throw new Exception("Maze solving method '" + method + "' not supported.");
