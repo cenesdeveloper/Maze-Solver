@@ -18,7 +18,9 @@ public class Main {
             String filePath = cmd.getOptionValue('i');
 
             long loadFile = System.currentTimeMillis();
+
             Maze maze = new Maze(filePath);
+
             long loadedFile = System.currentTimeMillis();
             long time = loadedFile - loadFile;
             System.out.printf("Time spent loading the maze from the file: %s",String.format("%.2f", (double) time) + " milliseconds\n");
@@ -32,9 +34,27 @@ public class Main {
                     System.out.println("incorrect path");
                 }
             } else {
-                String method = cmd.getOptionValue("method", "bfs");
-                Path path = solveMaze(method, maze);
-                System.out.println(path.getFactorizedForm());
+                if (cmd.getOptionValue("baseline") != null){
+                    String method = cmd.getOptionValue("method", "bfs");
+                    String baseline = cmd.getOptionValue("baseline","righthand");
+
+                    long mazeStart = System.currentTimeMillis();
+                    solveMaze(method, maze);
+                    long mazeEnd = System.currentTimeMillis();
+                    long mazeTime = mazeEnd - mazeStart;
+                    System.out.printf("Time spent exploring the maze using method %s: %s",method, String.format("%.2f", (double) mazeTime) + " milliseconds\n");
+
+                    long baselineStart = System.currentTimeMillis();
+                    measureTimeMaze(baseline, maze);
+                    long baselineEnd = System.currentTimeMillis();
+                    long baselineTime = baselineEnd - baselineStart;
+                    System.out.printf("Time spent exploring the maze using baseline method %s: %s",baseline, String.format("%.2f", (double) baselineTime) + " milliseconds\n");
+                }
+                else{
+                    String method = cmd.getOptionValue("method", "bfs");
+                    Path path = solveMaze(method, maze);
+                    System.out.println(path.getFactorizedForm());
+                }
             }
         } catch (Exception e) {
             System.err.println("MazeSolver failed.  Reason: " + e.getMessage());
@@ -76,6 +96,27 @@ public class Main {
         logger.info("Computing path");
         return solver.solve(maze);
     }
+    private static Path measureTimeMaze(String baselineMethod, Maze maze) throws Exception{
+        MazeSolver solver = null;
+        switch (baselineMethod) {
+            case "bfs" -> {
+                logger.debug("BFS algorithm chosen.");
+                solver = new BfsSolver();
+            }
+            case "tremaux" -> {
+                logger.debug("Tremaux algorithm chosen.");
+                solver = new TremauxSolver();
+            }
+            case "righthand" -> {
+                logger.debug("Right Hand algorithm chosen.");
+                solver = new RightHandSolver();
+            }
+            default -> {
+                throw new Exception("Maze solving method '" + baselineMethod + "' not supported.");
+            }
+        }
+        return solver.solve(maze);
+    }
 
     /**
      * Get options for CLI parser.
@@ -91,6 +132,7 @@ public class Main {
 
         options.addOption(new Option("p", true, "Path to be verified in maze"));
         options.addOption(new Option("method", true, "Specify which path computation algorithm will be used"));
+        options.addOption(new Option("baseline", true, "Measure speedup"));
 
         return options;
     }
