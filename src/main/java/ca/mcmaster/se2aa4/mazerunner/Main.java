@@ -16,7 +16,12 @@ public class Main {
         try {
             cmd = parser.parse(getParserOptions(), args);
             String filePath = cmd.getOptionValue('i');
+
+            long loadFile = System.currentTimeMillis();
             Maze maze = new Maze(filePath);
+            long loadedFile = System.currentTimeMillis();
+            long time = loadedFile - loadFile;
+            System.out.printf("Time spent loading the maze from the file: %s",String.format("%.2f", (double) time) + " milliseconds\n");
 
             if (cmd.getOptionValue("p") != null) {
                 logger.info("Validating path");

@@ -27,11 +27,11 @@ public class BfsSolver implements MazeSolver{
         marked[source.y()][source.x()] = true;
 
         while(!queue.isEmpty()){
-            Position v = queue.poll();
+            Position parent = queue.poll();
 
-            for (Position current: getMazeNeighbors(v)){
+            for (Position current: getMazeNeighbors(parent)){
                 if (!marked[current.y()][current.x()]){
-                    edgeTo[current.y()][current.x()] = v;
+                    edgeTo[current.y()][current.x()] = parent;
                     marked[current.y()][current.x()] = true;
                     queue.add(current);
                 }
