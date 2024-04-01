@@ -1,4 +1,7 @@
-package ca.mcmaster.se2aa4.mazerunner;
+package ca.mcmaster.se2aa4.mazerunner.Solver;
+
+import ca.mcmaster.se2aa4.mazerunner.Maze;
+import ca.mcmaster.se2aa4.mazerunner.Path;
 
 public interface MazeSolver {
     /**

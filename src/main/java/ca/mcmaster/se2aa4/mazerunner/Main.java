@@ -1,5 +1,9 @@
 package ca.mcmaster.se2aa4.mazerunner;
 
+import ca.mcmaster.se2aa4.mazerunner.Solver.BfsSolver;
+import ca.mcmaster.se2aa4.mazerunner.Solver.MazeSolver;
+import ca.mcmaster.se2aa4.mazerunner.Solver.RightHandSolver;
+import ca.mcmaster.se2aa4.mazerunner.Solver.TremauxSolver;
 import org.apache.commons.cli.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -8,7 +12,7 @@ public class Main {
 
     private static final Logger logger = LogManager.getLogger();
 
-    public static void main(String[] args) {
+public static void main(String[] args){
         logger.info("** Starting Maze Runner");
         CommandLineParser parser = new DefaultParser();
 
@@ -119,13 +123,10 @@ public class Main {
         }
         return solver.solve(maze);
     }
-    private static Float speedUp(Path baseline, Path method){
+    public static Float speedUp(Path baseline, Path method){
         Integer baseline_length = baseline.getCanonicalForm().replaceAll(" ", "").length();
         Integer method_length = method.getCanonicalForm().replaceAll(" ", "").length();
-//        System.out.printf("Baseline IC = %d\n", baseline_length);
-//        System.out.printf("Method IC = %d\n", method_length);
         Float speedup = (float) baseline_length/method_length;
-//        System.out.printf("SpeedUPPP = %.2f\n", speedup);
         return speedup;
     }
     /**
