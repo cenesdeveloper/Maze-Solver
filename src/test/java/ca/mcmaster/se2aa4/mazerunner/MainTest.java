@@ -23,6 +23,6 @@ class MainTest {
         Float speedup = speedUp(path, pathh);
 
         // Assert the speedup value is approximately equal to 1.00
-        assertEquals(Optional.of(1.00f), Optional.of(speedup));
+        assertEquals(1.00f, speedup);
     }
 }
