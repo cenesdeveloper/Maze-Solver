@@ -53,9 +53,9 @@ public static void main(String[] args){
                     long baselineTime = baselineEnd - baselineStart;
                     System.out.printf("Time spent exploring the maze using baseline method %s: %s",baseline, String.format("%.2f", (double) baselineTime) + " milliseconds\n");
 
-                    SpeedUp speedUp = new SpeedUp();
-                    Float speedup = speedUp.speedUp(pathh, path);
-                    System.out.printf("SpeedUp = %.2f\n", speedup);
+                    SpeedUp speed = new SpeedUp();
+                    Float speedUp = speed.speedUpRatio(pathh, path);
+                    System.out.printf("SpeedUp = %.2f\n", speedUp);
                 }
                 else{
                     String method = cmd.getOptionValue("method", "bfs");

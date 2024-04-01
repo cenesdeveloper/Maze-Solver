@@ -1,7 +1,7 @@
 package ca.mcmaster.se2aa4.mazerunner;
 
 public class SpeedUp {
-    public Float speedUp(Path baseline, Path method){
+    public Float speedUpRatio(Path baseline, Path method){
         Integer baseline_length = getPathLength(baseline);
         Integer method_length = getPathLength(method);
         Float speedUp = getRatio(baseline_length, method_length);
