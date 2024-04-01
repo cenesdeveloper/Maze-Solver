@@ -53,8 +53,9 @@ public static void main(String[] args){
                     long baselineTime = baselineEnd - baselineStart;
                     System.out.printf("Time spent exploring the maze using baseline method %s: %s",baseline, String.format("%.2f", (double) baselineTime) + " milliseconds\n");
 
-                    Float speedUp = speedUp(pathh, path);
-                    System.out.printf("SpeedUp = %.2f\n", speedUp);
+                    SpeedUp speedUp = new SpeedUp();
+                    Float speedup = speedUp.speedUp(pathh, path);
+                    System.out.printf("SpeedUp = %.2f\n", speedup);
                 }
                 else{
                     String method = cmd.getOptionValue("method", "bfs");
@@ -122,12 +123,6 @@ public static void main(String[] args){
             }
         }
         return solver.solve(maze);
-    }
-    public static Float speedUp(Path baseline, Path method){
-        Integer baseline_length = baseline.getCanonicalForm().replaceAll(" ", "").length();
-        Integer method_length = method.getCanonicalForm().replaceAll(" ", "").length();
-        Float speedup = (float) baseline_length/method_length;
-        return speedup;
     }
     /**
      * Get options for CLI parser.
