@@ -4,14 +4,14 @@ public class SpeedUp {
     public Float speedUp(Path baseline, Path method){
         Integer baseline_length = getPathLength(baseline);
         Integer method_length = getPathLength(method);
-        Float speedUp = getSpeedUp(baseline_length, method_length);
+        Float speedUp = getRatio(baseline_length, method_length);
         return speedUp;
     }
     public Integer getPathLength(Path path){
         Integer length = path.getCanonicalForm().replaceAll(" ", "").length();
         return length;
     }
-    public Float getSpeedUp(Integer a, Integer b){
+    public Float getRatio(Integer a, Integer b){
         Float speedup = (float) a/b;
         return speedup;
     }
