@@ -9,11 +9,12 @@ import static org.junit.jupiter.api.Assertions.*;
 class BfsSolverTest {
     @Test
     public void testBfs() throws Exception {
+        MazeSolver solver = new BfsSolver();
         Maze maze = new Maze("./examples/small.maz.txt");
-        BfsSolver bfs = new BfsSolver();
-        Path path = bfs.solve(maze);
+        Path path = solver.solve(maze);
         String bfsPath = path.getFactorizedForm();
         String shortestPath = "F L F R 2F L 6F R 4F R 2F L 2F R 2F L F";
+
         assertEquals(bfsPath, shortestPath);
     }
 }
