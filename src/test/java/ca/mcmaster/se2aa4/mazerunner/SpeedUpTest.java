@@ -10,7 +10,7 @@ class SpeedUpTest {
         Path path = new Path();
         path.addStep('F');
         path.addStep('R');
-        path.addStep('F');
+        path.addStep('L');
 
 
         Path pathh = new Path();
@@ -20,8 +20,8 @@ class SpeedUpTest {
 
         SpeedUp var = new SpeedUp();
         Float ratio = var.speedUpRatio(path, pathh);
-        // Assert the speedup value is approximately equal to 1.00
-        assertEquals(2.00F, ratio);
+
+        assertEquals(1.00F, ratio);
     }
 
 }
