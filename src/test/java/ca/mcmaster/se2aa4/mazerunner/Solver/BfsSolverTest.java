@@ -15,7 +15,6 @@ class BfsSolverTest {
         String bfsPath = path.getFactorizedForm();
         String shortestPath = "F L F R 2F L 6F R 4F R 2F L 2F R 2F L F";
 
-
         assertEquals(bfsPath, shortestPath);
     }
 
