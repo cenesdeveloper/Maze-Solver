@@ -1,6 +1,6 @@
-# Assignment A1 - Maze Runner
+# Assignment A3 - Maze Exploration
 
-* **Student**: [FIRSTNAME LASTNAME](MACID@mcmaster.ca)
+* **Student**: [Cemal Durak](MACID@mcmaster.ca)
 * **Program**: B. Eng. In Software Engineering
 * **Course code**: SFWRENG 2AA4
 * **Course Title**: Software Design I - Introduction to Software Development
