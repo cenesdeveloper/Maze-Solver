@@ -27,6 +27,11 @@ public class BfsSolver implements MazeSolver {
         bfs();
         return findPath();
     }
+
+    /**
+     * The bfs algorithm is from the book Algorithms by Robert Sedgewick and Kevin Wayne and the reference is below.
+     * Sedgewick, Robert, and Kevin Wayne. "Graphs." Algorithms, Addison-Wesley, 2011, p. 540.
+     */
     private void bfs(){
         Queue<Position> queue = new LinkedList<>();
         queue.add(source);
@@ -44,6 +49,10 @@ public class BfsSolver implements MazeSolver {
             }
         }
     }
+
+    /**
+     * Inspired by Algorithms by Robert Sedgewick and Kevin Wayne from Graphs Chapter p. 536.
+     */
     private Path findPath(){
         Path path = new Path();
         Direction dir = Direction.LEFT;
@@ -138,6 +147,10 @@ public class BfsSolver implements MazeSolver {
         }
         return path;
     }
+
+    /**
+     * Used getMazeNeighbors method from Alexandre Lachance's TremauxSolver Class
+     */
     private List<Position> getMazeNeighbors(Position pos) {
         List<Position> neighbors = new ArrayList<>();
 
