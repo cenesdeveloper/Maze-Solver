@@ -115,12 +115,12 @@ mosser@azrael A1-Template % java -jar target/mazerunner.jar -i ./examples/straig
 inccorrect path
 mosser@azrael A1-Template %
 ```
-If we want to choose a method specifically we add the -method flag and then indicate which method we want.
+If we want to choose a method specifically we add the `-method` flag and then indicate which method we want.
 ```
 $ java -jar target/mazerunner.jar -i ./examples/small.maz.txt -method bfs
 F L F R 2F L 6F R 4F R 2F L 2F R 2F L F
 ```
-If we want to compare algorithms with -baseline flag we add the -method flag before -baseline flag and put the methods
+If we want to compare algorithms with `-baseline` flag we add the `-method` flag before `-baseline` flag and put the methods
 ```
 Time spent loading the maze from the file: 1.00 milliseconds
 Time spent exploring the maze using method bfs: 4.00 milliseconds
