@@ -2,7 +2,7 @@
 
 - Authors:
     -  [Cemal Durak](durakc@mcmaster.ca)
-    -  [Alexandre Lachance]
+    -  [Alexandre Lachance](lachaa2@mcmaster.ca)
 * **Program**: B. Eng. In Software Engineering
 * **Course code**: SFWRENG 2AA4
 * **Course Title**: Software Design I - Introduction to Software Development
