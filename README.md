@@ -1,7 +1,6 @@
 # Assignment A3 - Maze Exploration
 
-* **Authors**: [Cemal Durak](durakc@mcmaster.ca) 
-               Alexandre Lachance
+* **Authors**: [Cemal Durak, Alexandre Lachance](durakc@mcmaster.ca)
 * **Program**: B. Eng. In Software Engineering
 * **Course code**: SFWRENG 2AA4
 * **Course Title**: Software Design I - Introduction to Software Development
@@ -28,6 +27,10 @@ This program explores a maze, finding a path from an entry point to an exit one.
 - The program takes as input a maze and print the path on the standard output.
     - For this assignment, the path does not have to be the shortest one.
 - The program can take a path as input and verify if it's a legit one.
+- The program has 3 different methods of solving the maze which are BfsSolver, TremauxSolver and, RightHandSolver.
+- The program compares instruction counts of the methods and returns the performance comparison of them.
+- The program calculates the time to read the text file and also the time it takes to solve maze with specified method.
+
 
 ## How to run this software?
 
@@ -81,10 +84,9 @@ The delivered program at the end of this assignment should use the following fla
 
 - `-i MAZE_FILE`: specifies the filename to be used;
 - `-p PATH_SEQUENCE`: activates the path verification mode to validate that PATH_SEQUENCE is correct for the maze
+- `-method METHOD`: Chooses the method of solving the maze three methods are bfs, righthand, tremaux.
+- `-baseline BASELINE`: Compares the instruction count of the chosen method with the baseline.
 
-If you are also delivering the bonus, your program will react to a third flag:
-
-- `-method {tremaux, righthand}`: specifies which path computation method to use. (default is right hand)
 
 #### Examples
 
@@ -110,5 +112,18 @@ If a given path is incorrect, the program prints the message `incorrect path` on
 mosser@azrael A1-Template % java -jar target/mazerunner.jar -i ./examples/straight.maz.txt -p 3F
 inccorrect path
 mosser@azrael A1-Template %
+```
+If we want to choose a method specifically we add the -method flag and then indicate which method we want.
+```
+$ java -jar target/mazerunner.jar -i ./examples/small.maz.txt -method bfs
+F L F R 2F L 6F R 4F R 2F L 2F R 2F L F
+```
+If we want to compare algorithms with -baseline flag we add the -method flag before -baseline flag and put the methods
+```
+Time spent loading the maze from the file: 1.00 milliseconds
+Time spent exploring the maze using method bfs: 4.00 milliseconds
+Time spent exploring the maze using baseline method righthand: 4.00 milliseconds
+SpeedUp = 3.28
+
 ```
 
