@@ -1,6 +1,6 @@
 # Assignment A3 - Maze Exploration
 
-* **Authors**: [Cemal Durak, Alexandre Lachance](durakc@mcmaster.ca)
+* **Authors**: [Cemal Durak](durakc@mcmaster.ca)
 * **Program**: B. Eng. In Software Engineering
 * **Course code**: SFWRENG 2AA4
 * **Course Title**: Software Design I - Introduction to Software Development
