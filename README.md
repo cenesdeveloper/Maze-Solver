@@ -1,4 +1,4 @@
-# Assignment A3 - Maze Exploration
+# Maze Exploration
 
 - Authors:
     -  [Cemal Durak](durakc@mcmaster.ca)
