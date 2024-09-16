@@ -122,6 +122,7 @@ F L F R 2F L 6F R 4F R 2F L 2F R 2F L F
 ```
 If we want to compare algorithms with `-baseline` flag we add the `-method` flag before `-baseline` flag and put the methods
 ```
+$ java -jar target/mazerunner.jar -i ./examples/small.maz.txt -method bfs -baseline righthand
 Time spent loading the maze from the file: 1.00 milliseconds
 Time spent exploring the maze using method bfs: 4.00 milliseconds
 Time spent exploring the maze using baseline method righthand: 4.00 milliseconds
